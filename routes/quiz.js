@@ -10,7 +10,7 @@ router.get('/', async (req, res) =>{
     console.log("Chosen Words: ", chosenWords);
     res.render('quiz', {chosenWords});
 });
-router.post('/', (req, res) =>{
+router.post('/', async (req, res) =>{
     console.log(req.body);
        let {userChoice, correctDef, totalQuestions, totalCorrect} = req.body;
     if(userChoice === correctDef)

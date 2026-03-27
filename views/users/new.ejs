@@ -1,17 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+   
+    <title>Add User</title>
 </head>
 <body>
+    <h1>Add New User</h1>
     <form action="/users" method="post">
         <label for="firstName">
            First Name:
-            <input type="text" name="firstName" value="<%= locals.firstName %>">
+            <input type="text" name="firstName" value="<%= firstName %>">
         </label>
+        <br><br>
+        <label for="lastName">
+            Last Name:
+            <input type="text" name="lastName" value="<%= lastName %>">
+             </label>
+        <br><br>
+        <label for ="gender">
+            Gender:
+            <select name="gender">
+                <option value="Male" <%= gender === "Male" ? "selected" : "" %>>Male</option>
+                <option value="Female"<%= gender === "Female" ? "selected" : "" %>>Female</option> 
+            </select>
+            </label>
+        <br><br>
+        <label for="age">
+            Age:
+            <input type="number" name="age" value="<%= age %>">
+            </label>
+        <br><br>
         <button type="submit">Submit</button>
     </form>
+    <br>
+<a href="/users">Back to List</a>
 </body>
-</html>
+</html> 

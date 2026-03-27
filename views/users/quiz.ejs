@@ -16,7 +16,7 @@
 
     <h1>Welcome to the Word Quiz!</h1>
     <% } else { %>
-        <h1>Score <%= score %>/<% =questionCount %></h1>
+        <h1>Score <%= score %>/<%= questionCount %></h1>
         <% } %>
         
     <!--Show the word and part of speech -->
@@ -34,10 +34,9 @@
             </li>
         <% } %>
     </ol>
-    <input type="submit" value="Submit Answer!">
-    <input type="hidden" name ="correctDef" value="<%= correctDef %>">
-    <input type="hidden" name ="totalQuestions" value="<%= questionCount %>">
-    <input type="hidden" name ="totalCorrect" value="<%= score %>">
+   <input type="hidden" name="correctDef" value="<%= correctDef %>">
+   <input type="hidden" name="totalQuestions" value="<%= totalQuestions %>">
+   <input type="hidden" name="totalCorrect" value="<%= totalCorrect %>">
     </form>
 </body>  
 </html>
