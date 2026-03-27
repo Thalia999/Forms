@@ -8,13 +8,16 @@ router.route('/').get, ((req, res) =>{
         const isValid = firstName !=="";
     if (isValid){
         console.log('Adding user: ${firstName}');
-        users.push({name:firstName});
+        users.push({firstName});
         res.render('users/list', {users});
     }
     else{
         console.log("Error adding user!");
         res.render("users/new", {firstName: firstName});
     }
+});
+router.get("/list", (req, res) =>{
+    res.render("users/list", {users});
 });
 router.get("/new", (req, res) =>{ // /users/new
     res.render("users/new", {firstName:"Test"})
@@ -32,7 +35,7 @@ router.route("/:id").get((req, res) =>{
     res.send(`Updating User data for id : ${req.params.id}`);
 });
 
-const users = [{name:"George"}, {name:" Justina"}];
+const users = [{firstName:"George"}, {firstName:" Justina"}];
 router.param("id", (req, res, next, id) =>{
 req.user = users[id];
 next();
