@@ -1,13 +1,13 @@
 const express= require('express');
 const router = express.Router();
 
-router.route('/').get, ((req, res) =>{
+router.route('/').get ((req, res) =>{
     res.send('User List');
     }).post((req, res) =>{
         const firstName = req.body.firstName;
         const isValid = firstName !=="";
     if (isValid){
-        console.log('Adding user: ${firstName}');
+        console.log(`Adding user: ${firstName}`);
         users.push({firstName});
         res.render('users/list', {users});
     }
@@ -25,7 +25,8 @@ router.get("/new", (req, res) =>{ // /users/new
 // router.get("/:id", (req, res) =>{ 
 //     res.send('Getting User data : ${req.params.id}');
 // });
-router.route("/:id").get((req, res) =>{
+router.route("/:id")
+.get((req, res) =>{
     console.log(req.user);
     console.log('Getting User Data!')
     res.send(`Getting User data for id : ${req.params.id}`);

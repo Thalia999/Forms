@@ -3,14 +3,14 @@ const router = express.Router();
 const {readFile} = require('fs').promises;
 //Work goes here
 
-router.get("/", async (req, res) =>{
+router.get('/', async (req, res) =>{
     //Get 5 words, with their pos and def and send back to the other page
     let chosenWords = await getWords();
     //send those back and render quiz.ejs
     console.log("Chosen Words: ", chosenWords);
     res.render('quiz', {chosenWords});
 });
-router.post("/", (req, res) =>{
+router.post('/', (req, res) =>{
     console.log(req.body);
        let {userChoice, correctDef, totalQuestions, totalCorrect} = req.body;
     if(userChoice === correctDef)

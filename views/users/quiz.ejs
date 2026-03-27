@@ -3,26 +3,25 @@
 <head>
  <title>Document</title>
 </head>
-<body>
    <body>
     <% 
-        let question.Count =locals.totalQuestions ??0;
+        let questionCount = locals.totalQuestions ??0;
         let score =locals.totalCorrect ??0;
 
         let randomIndex = parseInt(Math.random()*chosenWords.length); //generate a random index
         let chosenWord = chosenWords[randomIndex]; //pick that as our correct word
         let [correctWord, correctPart, correctDef] = chosenWord.split('\t'); //breaking it up into the 3 pieces
     %>
-    <% if (questionsCount ==0){$>
+    <% if (questionCount == 0) { %>
 
     <h1>Welcome to the Word Quiz!</h1>
     <% } else { %>
-        <h1>Score <%= score %>/<% questionCount %></h1>
+        <h1>Score <%= score %>/<% =questionCount %></h1>
         <% } %>
         
     <!--Show the word and part of speech -->
     <h2><%= correctWord %> - <%= correctPart %></h2> 
-    <form action="quiz" method="post"> <!--submits to quiz.js -->
+    <form action="/quiz" method="post"> <!--submits to quiz.js -->
     <ol>
         <% for (currentWord of chosenWords) {  
             //Loop through each word, show its definition only in the list
@@ -40,9 +39,5 @@
     <input type="hidden" name ="totalQuestions" value="<%= questionCount %>">
     <input type="hidden" name ="totalCorrect" value="<%= score %>">
     </form>
-</body>
-    
-    
-    
-</body>
+</body>  
 </html>
