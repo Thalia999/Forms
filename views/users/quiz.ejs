@@ -36,7 +36,8 @@
                 <% } else { %>
                     <span class="incorrect">Incorrect!</span>
                     <br>
-                    Correct Answer: <%= correctDef %>
+                    The correct definition of <strong><%= correctWord %></strong> is:
+            <%= correctDef %>
                 <% } %>
             </p>
             <% } %>
@@ -57,8 +58,11 @@
         
     </ol>
    <input type="hidden" name="correctDef" value="<%= correctDef %>">
+   <input type="hidden" name="correctWord" value="<%= correctWord %>">
    <input type="hidden" name="totalQuestions" value="<%= totalQuestions %>">
    <input type="hidden" name="totalCorrect" value="<%= totalCorrect %>">
+<br>
+   <button type="submit">Submit</button>
     </form>
 </body>  
 </html>

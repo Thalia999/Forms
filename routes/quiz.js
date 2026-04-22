@@ -6,22 +6,24 @@ const {readFile} = require('fs').promises;
 router.get('/', async (req, res) =>{
     //Get 5 words, with their pos and def and send back to the other page
     let chosenWords = await getWords();
-    //send those back and render quiz.ejs
-    console.log("Chosen Words: ", chosenWords);
-    res.render('quiz', {chosenWords});
+    
+    res.render('quiz', {chosenWords, totalQuestions: 0, totalCorrect: 0});
 });
 router.post('/', async (req, res) =>{
     console.log(req.body);
-       let {userChoice, correctDef, totalQuestions, totalCorrect} = req.body;
-    if(userChoice === correctDef)
-    {
-        console.log("User guessed Correctly!");
-        let score=totalCorrect+1;
+       let {userChoice, correctDef, correctWord, totalQuestions, totalCorrect} = req.body;
+
+       totalQuestions = parseInt(totalQuestions) || 0;
+       totalCorrect = parseInt(totalCorrect) || 0;
+    let isCorrect = userChoice === correctDef;
+
+    if (isCorrect) {
+        totalCorrect++;
     }
-    let total=totalQuestions+1;
-    //get another set of words--figure out how
-    //send set of words back with user score and their questions
-    //send some other data
+
+    totalQuestions++;
+    let chosenWords = await getWords();
+    res.render('quiz', {chosenWords, totalQuestions, totalCorrect, isCorrect, correctDef, correctWord});
 });
 
 let getWords = async ()=>{
