@@ -29,9 +29,9 @@
         <h1>Score <%= score %>/<%= questionCount %></h1>
         <% } %>
         <!--shows correct or incorrect-->
-        <% if (typeof isCorrect !== "undefined") { %>
+        <% if (locals.isCorrect !== "undefined") { %>
             <p>
-                <% if (isCorrect) { %>
+                <% if (locals.isCorrect) { %>
                     <span class="correct">Correct!</span>
                 <% } else { %>
                     <span class="incorrect">Incorrect!</span>
@@ -59,8 +59,8 @@
     </ol>
    <input type="hidden" name="correctDef" value="<%= correctDef %>">
    <input type="hidden" name="correctWord" value="<%= correctWord %>">
-   <input type="hidden" name="totalQuestions" value="<%= totalQuestions %>">
-   <input type="hidden" name="totalCorrect" value="<%= totalCorrect %>">
+   <input type="hidden" name="totalQuestions" value="<%= questionCount %>">
+   <input type="hidden" name="totalCorrect" value="<%= score %>">
 <br>
    <button type="submit">Submit</button>
     </form>
