@@ -29,7 +29,7 @@
         <h1>Score <%= score %>/<%= questionCount %></h1>
         <% } %>
         <!--shows correct or incorrect-->
-        <% if (locals.isCorrect !== "undefined") { %>
+        <% if (locals.isCorrect !== undefined) { %>
             <p>
                 <% if (locals.isCorrect) { %>
                     <span class="correct">Correct!</span>
