@@ -1,7 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <title>Document</title>
+ <title>Word Quiz</title>
+ <style>
+    .correct{
+        color: green;
+        font-weight: bold;
+    }
+    .incorrect{
+        color: red;
+        font-weight: bold;
+    }   
+ </style>
 </head>
    <body>
     <% 
@@ -18,7 +28,18 @@
     <% } else { %>
         <h1>Score <%= score %>/<%= questionCount %></h1>
         <% } %>
-        
+        <!--shows correct or incorrect-->
+        <% if (typeof isCorrect !== "undefined") { %>
+            <p>
+                <% if (isCorrect) { %>
+                    <span class="correct">Correct!</span>
+                <% } else { %>
+                    <span class="incorrect">Incorrect!</span>
+                    <br>
+                    Correct Answer: <%= correctDef %>
+                <% } %>
+            </p>
+            <% } %>
     <!--Show the word and part of speech -->
     <h2><%= correctWord %> - <%= correctPart %></h2> 
     <form action="/quiz" method="post"> <!--submits to quiz.js -->
@@ -33,6 +54,7 @@
                 </label> 
             </li>
         <% } %>
+        
     </ol>
    <input type="hidden" name="correctDef" value="<%= correctDef %>">
    <input type="hidden" name="totalQuestions" value="<%= totalQuestions %>">
@@ -40,3 +62,4 @@
     </form>
 </body>  
 </html>
+// the ol list keep tracks of scores across pages. using hidden inputs for correct ans.
